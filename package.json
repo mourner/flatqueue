@@ -1,13 +1,18 @@
 {
   "name": "flatqueue",
+  "main": "index",
+  "module": "index.mjs",
   "version": "0.0.0",
   "description": "The smallest and simplest JavaScript priority queue",
   "devDependencies": {
-    "esm": "^3.0.16",
     "tinyqueue": "^1.2.3"
   },
   "scripts": {
-    "bench": "node -r esm bench.mjs"
+    "bench": "node --experimental-modules bench.mjs"
   },
+  "files": [
+    "index.mjs",
+    "bench.mjs"
+  ],
   "license": "ISC"
 }
