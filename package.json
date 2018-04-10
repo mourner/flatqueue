@@ -5,14 +5,17 @@
   "version": "0.0.0",
   "description": "The smallest and simplest JavaScript priority queue",
   "devDependencies": {
+    "rollup": "^0.57.1",
     "tinyqueue": "^1.2.3"
   },
   "scripts": {
-    "bench": "node --experimental-modules bench.mjs"
+    "bench": "node --experimental-modules bench.mjs",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "index.mjs",
-    "bench.mjs"
+    "index.js"
   ],
   "license": "ISC"
 }
