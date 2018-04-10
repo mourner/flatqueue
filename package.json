@@ -2,7 +2,7 @@
   "name": "flatqueue",
   "main": "index",
   "module": "index.mjs",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The smallest and simplest JavaScript priority queue",
   "devDependencies": {
     "rollup": "^0.57.1",
