@@ -1,10 +1,10 @@
 
 export default {
     input: 'index.mjs',
-    format: 'umd',
     output: {
         file: 'index.js',
         name: 'FlatQueue',
+        format: 'umd',
         indent: false
     }
 };
