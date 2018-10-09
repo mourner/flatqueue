@@ -7,6 +7,10 @@ export default class FlatQueue {
         this.length = 0;
     }
 
+    clear() {
+        this.length = this.ids.length = this.values.length = 0;
+    }
+
     push(id, value) {
         this.ids.push(id);
         this.values.push(value);
