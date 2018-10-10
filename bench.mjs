@@ -9,7 +9,7 @@ const data = [];
 for (let i = 0; i < N; i++) data[i] = {value: Math.random()};
 
 
-const q = new TinyQueue(null, (a, b) => a.value - b.value);
+const q = new TinyQueue([], (a, b) => a.value - b.value);
 
 console.time(`tinyqueue push ${N}`);
 for (let i = 0; i < N; i++) q.push(data[i]);

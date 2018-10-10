@@ -1,4 +1,4 @@
-## flatqueue
+## flatqueue [![Build Status](https://travis-ci.com/mourner/flatqueue.svg?branch=master)](https://travis-ci.com/mourner/flatqueue)
 
 A very fast binary heap priority queue in JavaScript.
 Similar to [tinyqueue](https://github.com/mourner/tinyqueue/),
