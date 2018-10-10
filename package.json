@@ -5,13 +5,15 @@
   "version": "1.0.0",
   "description": "The smallest and simplest JavaScript priority queue",
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-mourner": "^2.0.3",
-    "rollup": "^0.57.1",
-    "tinyqueue": "^1.2.3"
+    "eslint": "^5.6.1",
+    "eslint-config-mourner": "^3.0.0",
+    "rollup": "^0.66.5",
+    "tape": "^4.9.1",
+    "tinyqueue": "^2.0.0"
   },
   "scripts": {
-    "test": "eslint *.mjs",
+    "pretest": "eslint *.mjs",
+    "test": "node --experimental-modules test.mjs",
     "bench": "node --experimental-modules bench.mjs",
     "build": "rollup -c",
     "prepublishOnly": "npm run build"
