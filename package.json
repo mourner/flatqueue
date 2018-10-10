@@ -19,18 +19,26 @@
     "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
-    "extends": "mourner",
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "rules": {
-      "no-var": "error",
-      "prefer-const": "error"
-    }
+    "extends": "mourner"
   },
   "files": [
     "index.mjs",
     "index.js"
   ],
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mourner/flatqueue.git"
+  },
+  "keywords": [
+    "algorithms",
+    "data structures",
+    "priority queue",
+    "binary heap"
+  ],
+  "author": "Vladimir Agafonkin",
+  "bugs": {
+    "url": "https://github.com/mourner/flatqueue/issues"
+  },
+  "homepage": "https://github.com/mourner/flatqueue#readme"
 }
