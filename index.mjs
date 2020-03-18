@@ -8,14 +8,14 @@ export default class FlatQueue {
     }
 
     clear() {
-        this.length = this.ids.length = this.values.length = 0;
+        this.length = 0;
     }
 
     push(id, value) {
-        this.ids.push(id);
-        this.values.push(value);
-
         let pos = this.length++;
+        this.ids[pos] = id;
+        this.values[pos] = value;
+
         while (pos > 0) {
             const parent = (pos - 1) >> 1;
             const parentValue = this.values[parent];
@@ -63,9 +63,6 @@ export default class FlatQueue {
             this.ids[pos] = id;
             this.values[pos] = value;
         }
-
-        this.ids.pop();
-        this.values.pop();
 
         return top;
     }
