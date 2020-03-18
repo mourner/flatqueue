@@ -5,11 +5,11 @@
   "version": "1.1.0",
   "description": "The smallest and simplest JavaScript priority queue",
   "devDependencies": {
-    "eslint": "^5.6.1",
+    "eslint": "^6.8.0",
     "eslint-config-mourner": "^3.0.0",
-    "rollup": "^0.66.5",
-    "tape": "^4.9.1",
-    "tinyqueue": "^2.0.0"
+    "rollup": "^2.1.0",
+    "tape": "^4.13.2",
+    "tinyqueue": "^2.0.3"
   },
   "scripts": {
     "pretest": "eslint *.mjs",
