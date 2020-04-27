@@ -37,6 +37,8 @@ test('handles edge cases with few elements', (t) => {
     t.equal(queue.pop(), 3);
     t.equal(queue.pop(), 2);
     t.equal(queue.pop(), undefined);
+    t.equal(queue.peek(), undefined);
+    t.equal(queue.peekValue(), undefined);
 
     t.end();
 });
