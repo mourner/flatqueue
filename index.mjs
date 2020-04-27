@@ -68,10 +68,12 @@ export default class FlatQueue {
     }
 
     peek() {
+        if (this.length === 0) return undefined;
         return this.ids[0];
     }
 
     peekValue() {
+        if (this.length === 0) return undefined;
         return this.values[0];
     }
 }
