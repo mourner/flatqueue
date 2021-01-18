@@ -76,4 +76,8 @@ export default class FlatQueue {
         if (this.length === 0) return undefined;
         return this.values[0];
     }
+
+    shrink() {
+        this.ids.length = this.values.length = this.length;
+    }
 }

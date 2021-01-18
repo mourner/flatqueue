@@ -42,3 +42,21 @@ test('handles edge cases with few elements', (t) => {
 
     t.end();
 });
+
+test('shrinks internal arrays when calling shrink', (t) => {
+    const queue = new FlatQueue();
+
+    for (let i = 0; i < 10; i++) queue.push(i, i);
+
+    while (queue.length) queue.pop();
+
+    t.equal(queue.ids.length, 10);
+    t.equal(queue.values.length, 10);
+
+    queue.shrink();
+
+    t.equal(queue.ids.length, 0);
+    t.equal(queue.values.length, 0);
+
+    t.end();
+});
