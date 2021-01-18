@@ -1,5 +1,5 @@
 
-import FlatQueue from './';
+import FlatQueue from './index.js';
 import TinyQueue from 'tinyqueue';
 
 const N = 1000000;

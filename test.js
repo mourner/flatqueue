@@ -1,5 +1,5 @@
 
-import FlatQueue from './index.mjs';
+import FlatQueue from './index.js';
 import test from 'tape';
 
 const data = [];

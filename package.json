@@ -1,31 +1,29 @@
 {
   "name": "flatqueue",
-  "main": "index",
-  "module": "index.mjs",
   "version": "1.2.1",
   "description": "The smallest and simplest JavaScript priority queue",
+  "main": "index.js",
+  "type": "module",
+  "module": "index.js",
+  "exports": "./index.js",
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^7.18.0",
     "eslint-config-mourner": "^3.0.0",
-    "rollup": "^2.1.0",
-    "tape": "^4.13.2",
+    "tape": "^5.1.1",
     "tinyqueue": "^2.0.3"
   },
   "scripts": {
-    "pretest": "eslint *.mjs",
-    "test": "node --experimental-modules test.mjs",
-    "bench": "node --experimental-modules bench.mjs",
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build"
+    "pretest": "eslint *.js",
+    "test": "node test.js"
   },
   "eslintConfig": {
     "extends": "mourner"
   },
-  "files": [
-    "index.mjs",
-    "index.js"
-  ],
+  "files": [],
   "license": "ISC",
+  "engines": {
+    "node": ">= 12.17.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mourner/flatqueue.git"
@@ -36,9 +34,5 @@
     "priority queue",
     "binary heap"
   ],
-  "author": "Vladimir Agafonkin",
-  "bugs": {
-    "url": "https://github.com/mourner/flatqueue/issues"
-  },
-  "homepage": "https://github.com/mourner/flatqueue#readme"
+  "author": "Vladimir Agafonkin"
 }
