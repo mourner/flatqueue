@@ -1,6 +1,8 @@
 
+import {test} from 'uvu';
+import * as assert from 'uvu/assert';
+
 import FlatQueue from './index.js';
-import test from 'tape';
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -9,22 +11,20 @@ for (let i = 0; i < 100; i++) {
 
 const sorted = data.slice().sort((a, b) => a - b);
 
-test('maintains a priority queue', (t) => {
+test('maintains a priority queue', () => {
     const queue = new FlatQueue();
     for (let i = 0; i < data.length; i++) queue.push(i, data[i]);
 
-    t.equal(queue.peekValue(), sorted[0]);
-    t.equal(data[queue.peek()], sorted[0]);
+    assert.is(queue.peekValue(), sorted[0]);
+    assert.is(data[queue.peek()], sorted[0]);
 
     const result = [];
     while (queue.length) result.push(data[queue.pop()]);
 
-    t.same(result, sorted);
-
-    t.end();
+    assert.equal(result, sorted);
 });
 
-test('handles edge cases with few elements', (t) => {
+test('handles edge cases with few elements', () => {
     const queue = new FlatQueue();
 
     queue.push(0, 2);
@@ -34,29 +34,27 @@ test('handles edge cases with few elements', (t) => {
     queue.pop();
     queue.push(2, 2);
     queue.push(3, 1);
-    t.equal(queue.pop(), 3);
-    t.equal(queue.pop(), 2);
-    t.equal(queue.pop(), undefined);
-    t.equal(queue.peek(), undefined);
-    t.equal(queue.peekValue(), undefined);
-
-    t.end();
+    assert.is(queue.pop(), 3);
+    assert.is(queue.pop(), 2);
+    assert.is(queue.pop(), undefined);
+    assert.is(queue.peek(), undefined);
+    assert.is(queue.peekValue(), undefined);
 });
 
-test('shrinks internal arrays when calling shrink', (t) => {
+test('shrinks internal arrays when calling shrink', () => {
     const queue = new FlatQueue();
 
     for (let i = 0; i < 10; i++) queue.push(i, i);
 
     while (queue.length) queue.pop();
 
-    t.equal(queue.ids.length, 10);
-    t.equal(queue.values.length, 10);
+    assert.is(queue.ids.length, 10);
+    assert.is(queue.values.length, 10);
 
     queue.shrink();
 
-    t.equal(queue.ids.length, 0);
-    t.equal(queue.values.length, 0);
-
-    t.end();
+    assert.is(queue.ids.length, 0);
+    assert.is(queue.values.length, 0);
 });
+
+test.run();

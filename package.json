@@ -9,8 +9,8 @@
   "devDependencies": {
     "eslint": "^7.18.0",
     "eslint-config-mourner": "^3.0.0",
-    "tape": "^5.1.1",
-    "tinyqueue": "^2.0.3"
+    "tinyqueue": "^2.0.3",
+    "uvu": "^0.5.1"
   },
   "scripts": {
     "pretest": "eslint *.js",
