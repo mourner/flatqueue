@@ -45,6 +45,14 @@ If this queue is empty, returns `undefined`.
 Returns the priority value of the item at the head of this queue without removing it.
 If this queue is empty, returns `undefined`.
 
+### `FlatQueue.clear()`
+
+Removes all items from the queue.
+
+### `FlatQueue.shrink()`
+
+Shrinks the internal arrays to `this.length`.
+
 ### `FlatQueue.length`
 
 Number of items in the queue. Readonly.
