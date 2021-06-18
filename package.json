@@ -6,6 +6,7 @@
   "type": "module",
   "module": "index.js",
   "exports": "./index.js",
+  "types": "./index.d.ts",
   "devDependencies": {
     "eslint": "^7.18.0",
     "eslint-config-mourner": "^3.0.0",
