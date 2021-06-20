@@ -7,18 +7,19 @@ but stores the queue as two flat arrays of items and their numeric priority valu
 This makes the queue more limited, but several times faster.
 
 ```js
-const queue = new FlatQueue();
+const q = new FlatQueue();
 
-const data = "Lorem ipsum dolor sit amet consetetur sadipscing elitr".split(" ");
-for (const word of data) {
-  const priority = word.length;
-  queue.push(word, priority);
+for (let i = 0; i < items.length; i++) {
+    // Push an item index and its priority value.
+    // You can push other values as well, for example the item itself. However,
+    // storing only integers enables certain performance optimizations in some
+    // JavaScript engines.
+    q.push(i, items[i].value);
 }
 
-// Iterate through words from shortest to longest.
-while (queue.length !== 0) {
-  console.log(queue.pop());
-}
+q.peekValue(); // Read top item priority value
+q.peek(); // Read top item index
+q.pop(); // Remove and return the top item index
 ```
 
 ## API
@@ -28,7 +29,7 @@ while (queue.length !== 0) {
 Adds `item` to the queue with the specified `priority`.
 
 `priority` must be a number. Items are sorted and returned from low to high priority.
-Multiple items with the same priority value can be added to the queue, but there is no guaranteed order between these items.
+Multiple items with the same priority value can be added to the queue, but the queue is not stable (items with the same priority are not guaranteed to be popped in iteration order).
 
 ### `FlatQueue.pop()`
 
@@ -52,6 +53,9 @@ Removes all items from the queue.
 ### `FlatQueue.shrink()`
 
 Shrinks the internal arrays to `this.length`.
+
+`pop()` and `clear()` calls don't free memory automatically to avoid unnecessary resize operations.
+This also means that items that have been added to the queue can't be garbage collected until a new item is pushed in their place, or this method is called.
 
 ### `FlatQueue.length`
 
