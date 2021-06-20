@@ -41,6 +41,11 @@ export default class FlatQueue<T> {
 
     /**
      * Shrinks the internal arrays to `this.length`.
+     * 
+     * `pop()` and `clear()` calls don't free memory automatically to avoid
+     * unnecessary resize operations. This also means that items that have been
+     * added to the queue can't be garbage collected until a new item is pushed
+     * in their place, or this method is called.
      */
     shrink(): void;
 }
