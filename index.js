@@ -13,8 +13,6 @@ export default class FlatQueue {
 
     push(id, value) {
         let pos = this.length++;
-        this.ids[pos] = id;
-        this.values[pos] = value;
 
         while (pos > 0) {
             const parent = (pos - 1) >> 1;
