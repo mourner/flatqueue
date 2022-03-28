@@ -1,4 +1,4 @@
-## flatqueue [![Build Status](https://travis-ci.com/mourner/flatqueue.svg?branch=master)](https://travis-ci.com/mourner/flatqueue)
+## flatqueue [![Build Status](https://github.com/mourner/flatqueue/workflows/Node/badge.svg?branch=master)](https://github.com/mourner/flatqueue/actions)
 
 A very fast binary heap priority queue in JavaScript.
 Similar to [tinyqueue](https://github.com/mourner/tinyqueue/),
@@ -7,6 +7,8 @@ but stores the queue as two flat arrays of item ids and their numeric priority v
 This makes the queue more limited, but several times faster.
 
 ```js
+import FlatQueue from 'flatqueue';
+
 const q = new FlatQueue();
 
 for (let i = 0; i < items.length; i++) {
