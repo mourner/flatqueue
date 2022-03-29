@@ -2,26 +2,34 @@
   "name": "flatqueue",
   "version": "2.0.0",
   "description": "The smallest and simplest JavaScript priority queue",
-  "main": "index.js",
   "type": "module",
-  "module": "index.js",
-  "exports": "./index.js",
+  "main": "./index.cjs",
+  "sideEffects": false,
+  "exports": {
+    "import": "index.js",
+    "require": "index.cjs"
+  },
   "types": "./index.d.ts",
   "devDependencies": {
     "eslint": "^8.12.0",
     "eslint-config-mourner": "^3.0.0",
+    "rollup": "^2.70.1",
     "tinyqueue": "^2.0.3",
     "uvu": "^0.5.3"
   },
   "scripts": {
-    "pretest": "eslint *.js",
-    "test": "node test.js"
+    "pretest": "eslint index.js test.js",
+    "test": "node test.js",
+    "build": "rollup index.js --file index.cjs --format umd --name FlatQueue",
+    "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": "mourner"
   },
   "files": [
-    "index.d.ts"
+    "index.d.ts",
+    "index.js",
+    "index.cjs"
   ],
   "license": "ISC",
   "engines": {

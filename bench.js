@@ -37,9 +37,9 @@ console.time(`flatqueue pop ${N}`);
 for (let i = 0; i < N; i++) f.pop();
 console.timeEnd(`flatqueue pop ${N}`);
 
-console.time(`flat push/pop ${N}`);
+console.time(`flatqueue push/pop ${N}`);
 for (let i = 0; i < N; i += K) {
     for (let j = 0; j < K; j++) f.push(i, data[i + j].value);
     for (let j = 0; j < K; j++) f.pop();
 }
-console.timeEnd(`flat push/pop ${N}`);
+console.timeEnd(`flatqueue push/pop ${N}`);

@@ -3,3 +3,4 @@ yarn.lock
 pnpm-lock.yaml
 pacakge-lock.json
 node_modules
+index.cjs
