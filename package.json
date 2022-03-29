@@ -4,6 +4,7 @@
   "description": "The smallest and simplest JavaScript priority queue",
   "type": "module",
   "main": "index.umd.js",
+  "module": "index.js",
   "sideEffects": false,
   "exports": "./index.js",
   "types": "./index.d.ts",
