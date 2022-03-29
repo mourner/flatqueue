@@ -3,33 +3,31 @@
   "version": "2.0.1",
   "description": "The smallest and simplest JavaScript priority queue",
   "type": "module",
-  "main": "./index.cjs",
+  "main": "index.umd.js",
   "sideEffects": false,
-  "exports": {
-    "import": "index.js",
-    "require": "index.cjs"
-  },
+  "exports": "./index.js",
   "types": "./index.d.ts",
   "devDependencies": {
     "eslint": "^8.12.0",
     "eslint-config-mourner": "^3.0.0",
     "rollup": "^2.70.1",
+    "rollup-plugin-terser": "^7.0.2",
     "tinyqueue": "^2.0.3",
     "uvu": "^0.5.3"
   },
   "scripts": {
     "pretest": "eslint index.js test.js",
     "test": "node test.js",
-    "build": "rollup index.js --file index.cjs --format umd --name FlatQueue",
+    "build": "rollup index.js -o index.umd.js -n FlatQueue -f umd -p terser",
     "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": "mourner"
   },
   "files": [
-    "index.d.ts",
     "index.js",
-    "index.cjs"
+    "index.umd.js",
+    "index.d.ts"
   ],
   "license": "ISC",
   "engines": {
