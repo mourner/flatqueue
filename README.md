@@ -8,7 +8,6 @@ but stores the queue as two flat arrays of items and their numeric priority valu
 This makes the queue more limited, but several times faster.
 
 [![Build Status](https://github.com/mourner/flatqueue/workflows/Node/badge.svg?branch=master)](https://github.com/mourner/flatqueue/actions)
-[![minzipped size](https://badgen.net/bundlephobia/minzip/flatqueue)](https://esm.run/flatqueue)
 [![Simply Awesome](https://img.shields.io/badge/simply-awesome-brightgreen.svg)](https://github.com/mourner/projects)
 
 ## Usage
@@ -54,9 +53,7 @@ There's also a UMD bundle that exposes a global `FlatQueue` global variable:
 
 Creates an empty queue object with the following methods and properties:
 
-### Methods
-
-#### `push(item, priority)`
+### `push(item, priority)`
 
 Adds `item` to the queue with the specified `priority`.
 
@@ -64,26 +61,26 @@ Adds `item` to the queue with the specified `priority`.
 Multiple items with the same priority value can be added to the queue, but the queue is not stable
 (items with the same priority are not guaranteed to be popped in iteration order).
 
-#### `pop()`
+### `pop()`
 
 Removes and returns the item from the head of this queue, which is one of the items with the lowest priority.
 If this queue is empty, returns `undefined`.
 
-#### `peek()`
+### `peek()`
 
 Returns the item from the head of this queue without removing it.
 If this queue is empty, returns `undefined`.
 
-#### `peekValue()`
+### `peekValue()`
 
 Returns the priority value of the item at the head of this queue without removing it.
 If this queue is empty, returns `undefined`.
 
-#### `clear()`
+### `clear()`
 
 Removes all items from the queue.
 
-#### `shrink()`
+### `shrink()`
 
 Shrinks the internal arrays to `this.length`.
 
@@ -91,17 +88,15 @@ Shrinks the internal arrays to `this.length`.
 This also means that items that have been added to the queue can't be garbage collected
 until a new item is pushed in their place, or this method is called.
 
-### Properties
-
-#### `length`
+### `length`
 
 Number of items in the queue. Read-only.
 
-#### `ids`
+### `ids`
 
 An underlying array of items. Note that it can be bigger than the `length` as it's not eagerly cleared.
 
-#### `values`
+### `values`
 
 An underlying array of priority values. Note that it can be bigger than the `length` as it's not eagerly cleared.
 
