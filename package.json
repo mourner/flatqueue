@@ -14,14 +14,13 @@
     "eslint": "^8.12.0",
     "eslint-config-mourner": "^3.0.0",
     "rollup": "^2.70.1",
-    "rollup-plugin-terser": "^7.0.2",
     "tinyqueue": "^2.0.3",
     "uvu": "^0.5.3"
   },
   "scripts": {
     "pretest": "eslint index.js test.js",
     "test": "node test.js",
-    "build": "rollup index.js -o index.umd.js -n FlatQueue -f umd -p terser",
+    "build": "rollup index.js -o index.umd.js -n FlatQueue -f umd",
     "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
