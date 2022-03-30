@@ -2,6 +2,8 @@
   "name": "flatqueue",
   "version": "2.0.3",
   "description": "The smallest and simplest JavaScript priority queue",
+  "author": "Vladimir Agafonkin",
+  "license": "ISC",
   "type": "module",
   "main": "index.umd.js",
   "module": "index.js",
@@ -30,7 +32,6 @@
     "index.umd.js",
     "index.d.ts"
   ],
-  "license": "ISC",
   "engines": {
     "node": ">= 12.17.0"
   },
@@ -43,6 +44,5 @@
     "data structures",
     "priority queue",
     "binary heap"
-  ],
-  "author": "Vladimir Agafonkin"
+  ]
 }
