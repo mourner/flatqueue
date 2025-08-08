@@ -1,6 +1,6 @@
 
-import {test} from 'uvu';
-import * as assert from 'uvu/assert';
+import test from 'node:test';
+import assert from 'node:assert/strict';
 
 import FlatQueue from './index.js';
 
@@ -15,13 +15,13 @@ test('maintains a priority queue', () => {
     const queue = new FlatQueue();
     for (let i = 0; i < data.length; i++) queue.push(i, data[i]);
 
-    assert.is(queue.peekValue(), sorted[0]);
-    assert.is(data[queue.peek()], sorted[0]);
+    assert.equal(queue.peekValue(), sorted[0]);
+    assert.equal(data[queue.peek()], sorted[0]);
 
     const result = [];
     while (queue.length) result.push(data[queue.pop()]);
 
-    assert.equal(result, sorted);
+    assert.deepEqual(result, sorted);
 });
 
 test('handles edge cases with few elements', () => {
@@ -34,11 +34,11 @@ test('handles edge cases with few elements', () => {
     queue.pop();
     queue.push(2, 2);
     queue.push(3, 1);
-    assert.is(queue.pop(), 3);
-    assert.is(queue.pop(), 2);
-    assert.is(queue.pop(), undefined);
-    assert.is(queue.peek(), undefined);
-    assert.is(queue.peekValue(), undefined);
+    assert.equal(queue.pop(), 3);
+    assert.equal(queue.pop(), 2);
+    assert.equal(queue.pop(), undefined);
+    assert.equal(queue.peek(), undefined);
+    assert.equal(queue.peekValue(), undefined);
 });
 
 test('shrinks internal arrays when calling shrink', () => {
@@ -48,13 +48,13 @@ test('shrinks internal arrays when calling shrink', () => {
 
     while (queue.length) queue.pop();
 
-    assert.is(queue.ids.length, 10);
-    assert.is(queue.values.length, 10);
+    assert.equal(queue.ids.length, 10);
+    assert.equal(queue.values.length, 10);
 
     queue.shrink();
 
-    assert.is(queue.ids.length, 0);
-    assert.is(queue.values.length, 0);
+    assert.equal(queue.ids.length, 0);
+    assert.equal(queue.values.length, 0);
 });
 
 test.run();

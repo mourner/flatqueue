@@ -11,29 +11,17 @@
   "exports": "./index.js",
   "types": "./index.d.ts",
   "devDependencies": {
-    "eslint": "^8.12.0",
-    "eslint-config-mourner": "^3.0.0",
-    "rollup": "^2.70.1",
-    "tinyqueue": "^2.0.3",
-    "uvu": "^0.5.3"
+    "eslint": "^9.32.0",
+    "eslint-config-mourner": "^4.1.0"
   },
   "scripts": {
     "pretest": "eslint index.js test.js",
-    "test": "node test.js",
-    "build": "rollup index.js -o index.umd.js -n FlatQueue -f umd",
-    "prepublishOnly": "npm run build"
-  },
-  "eslintConfig": {
-    "extends": "mourner"
+    "test": "node test.js"
   },
   "files": [
     "index.js",
-    "index.umd.js",
     "index.d.ts"
   ],
-  "engines": {
-    "node": ">= 12.17.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mourner/flatqueue.git"
