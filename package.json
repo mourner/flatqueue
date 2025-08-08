@@ -5,7 +5,6 @@
   "author": "Vladimir Agafonkin",
   "license": "ISC",
   "type": "module",
-  "main": "index.umd.js",
   "module": "index.js",
   "sideEffects": false,
   "exports": "./index.js",

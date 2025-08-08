@@ -13,9 +13,7 @@ export default class FlatQueue {
         this.length = 0;
     }
 
-    /**
-     * Removes all items from the queue.
-     */
+    /** Removes all items from the queue. */
     clear() {
         this.length = 0;
     }
@@ -23,9 +21,8 @@ export default class FlatQueue {
     /**
      * Adds `item` to the queue with the specified `priority`.
      *
-     * `priority` must be a number. Items are sorted and returned from low to
-     * high priority. Multiple items with the same priority value can be added
-     * to the queue, but there is no guaranteed order between these items.
+     * `priority` must be a number. Items are sorted and returned from low to high priority. Multiple items
+     * with the same priority value can be added to the queue, but there is no guaranteed order between these items.
      *
      * @param {T} item
      * @param {number} priority
@@ -48,8 +45,7 @@ export default class FlatQueue {
 
     /**
      * Removes and returns the item from the head of this queue, which is one of
-     * the items with the lowest priority. If this queue is empty, returns
-     * `undefined`.
+     * the items with the lowest priority. If this queue is empty, returns `undefined`.
      */
     pop() {
         if (this.length === 0) return undefined;
@@ -82,13 +78,9 @@ export default class FlatQueue {
         return top;
     }
 
-    /**
-     * Returns the item from the head of this queue without removing it. If this
-     * queue is empty, returns `undefined`.
-     */
+    /** Returns the item from the head of this queue without removing it. If this queue is empty, returns `undefined`. */
     peek() {
-        if (this.length === 0) return undefined;
-        return this.ids[0];
+        return this.length > 0 ? this.ids[0] : undefined;
     }
 
     /**
@@ -96,17 +88,15 @@ export default class FlatQueue {
      * removing it. If this queue is empty, returns `undefined`.
      */
     peekValue() {
-        if (this.length === 0) return undefined;
-        return this.values[0];
+        return this.length > 0 ? this.values[0] : undefined;
     }
 
     /**
      * Shrinks the internal arrays to `this.length`.
      *
-     * `pop()` and `clear()` calls don't free memory automatically to avoid
-     * unnecessary resize operations. This also means that items that have been
-     * added to the queue can't be garbage collected until a new item is pushed
-     * in their place, or this method is called.
+     * `pop()` and `clear()` calls don't free memory automatically to avoid unnecessary resize operations.
+     * This also means that items that have been added to the queue can't be garbage collected until
+     * a new item is pushed in their place, or this method is called.
      */
     shrink() {
         this.ids.length = this.values.length = this.length;
