@@ -7,8 +7,7 @@ but stores the queue as two flat arrays of items and their numeric priority valu
 (without a way to specify a comparator function).
 This makes the queue more limited, but several times faster.
 
-[![Build Status](https://github.com/mourner/flatqueue/workflows/Node/badge.svg?branch=master)](https://github.com/mourner/flatqueue/actions)
-[![Minzipped Size](https://badgen.net/bundlephobia/minzip/flatqueue)](https://esm.run/flatqueue)
+[![Build Status](https://github.com/mourner/flatqueue/actions/workflows/node.yml/badge.svg)](https://github.com/mourner/flatqueue/actions/workflows/node.yml)
 [![Simply Awesome](https://img.shields.io/badge/simply-awesome-brightgreen.svg)](https://github.com/mourner/projects)
 
 ## Usage
