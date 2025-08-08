@@ -12,11 +12,12 @@
   "types": "./index.d.ts",
   "devDependencies": {
     "eslint": "^9.32.0",
-    "eslint-config-mourner": "^4.1.0"
+    "eslint-config-mourner": "^4.1.0",
+    "typescript": "^5.9.2"
   },
   "scripts": {
     "pretest": "eslint index.js test.js",
-    "test": "node test.js"
+    "test": "tsc && node test.js"
   },
   "files": [
     "index.js",
