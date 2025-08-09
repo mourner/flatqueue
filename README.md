@@ -41,11 +41,7 @@ Alternatively, use as a module in a browser directly:
     import FlatQueue from 'https://cdn.jsdelivr.net/npm/flatqueue/+esm';
 ```
 
-There's also a UMD bundle that exposes a global `FlatQueue` global variable:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/flatqueue"></script>
-```
+For legacy environments requiring CommonJS or a UMD bundle, use `flatqueue` v2.
 
 ## API
 
