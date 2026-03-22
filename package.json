@@ -10,9 +10,9 @@
   "exports": "./index.js",
   "types": "./index.d.ts",
   "devDependencies": {
-    "eslint": "^9.32.0",
+    "eslint": "^10.1.0",
     "eslint-config-mourner": "^4.1.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "scripts": {
     "pretest": "eslint index.js test.js",
