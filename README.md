@@ -45,7 +45,7 @@ For legacy environments requiring CommonJS or a UMD bundle, use `flatqueue` v2.
 
 ## API
 
-### `new FlatQueue()`
+### `new FlatQueue([capacity[, ValuesArray[, IdsArray]]])`
 
 Creates an empty queue object with the following methods and properties:
 
@@ -88,6 +88,10 @@ until a new item is pushed in their place, or this method is called.
 
 Number of items in the queue. Read-only.
 
+### `capacity`
+
+Maximum number of items the queue can hold, or `Infinity` for a regular-array queue (created without a `capacity`). Read-only.
+
 ### `ids`
 
 An underlying array of items. Note that it can be bigger than the `length` as it's not eagerly cleared.
@@ -98,10 +102,14 @@ An underlying array of priority values. Note that it can be bigger than the `len
 
 ### Using typed arrays
 
-If you know the maximum queue size beforehand, you can override the queue to use typed arrays for better performance and memory footprint. This makes it match the performance of the popular [heapify](https://github.com/luciopaiva/heapify) library.
+If `capacity` is provided, the queue is backed by fixed-size typed arrays instead of regular arrays, which is faster
+and uses less memory, matching the performance of the popular [heapify](https://github.com/luciopaiva/heapify) library,
+but the queue can't grow past `capacity`, throwing a `RangeError`. This is ideal when the maximum size is known upfront.
+
+`values` uses `ValuesArray` (default `Float64Array`) and `ids` uses `IdsArray` (default `Uint32Array`);
+pass narrower constructors like `Uint16Array` if your priorities or ids are known to fit them.
 
 ```js
-const q = new FlatQueue();
-q.ids = new Uint16Array(32);
-q.values = new Uint32Array(32);
+// a queue up to 10000 nodes, with Uint32 priorities and Uint16 ids
+const q = new FlatQueue(64, Uint32Array, Uint16Array);
 ```

@@ -1,13 +1,34 @@
 
-/** @template T */
+/**
+ * @typedef {Float64ArrayConstructor | Float32ArrayConstructor |
+ *   Uint32ArrayConstructor | Int32ArrayConstructor | Uint16ArrayConstructor |
+ *   Int16ArrayConstructor | Uint8ArrayConstructor | Int8ArrayConstructor} TypedArrayConstructor
+ */
+
+/** @template [T=number] */
 export default class FlatQueue {
 
-    constructor() {
-        /** @type T[] */
-        this.ids = [];
+    /**
+     * Creates an empty queue. If `capacity` is provided, the queue is backed by fixed-size typed
+     * arrays for better performance and memory use, but can't grow beyond `capacity`. `values` uses
+     * `ValuesArray` (default `Float64Array`) and `ids` uses `IdsArray` (default `Uint32Array`); pass
+     * narrower constructors like `Uint16Array` if your values or ids are known to fit them.
+     *
+     * @param {number} [capacity]
+     * @param {TypedArrayConstructor} [ValuesArray]
+     * @param {TypedArrayConstructor} [IdsArray]
+     */
+    constructor(capacity = Infinity, ValuesArray = Float64Array, IdsArray = Uint32Array) {
+        const fixed = capacity !== Infinity;
 
-        /** @type number[] */
-        this.values = [];
+        /** @type {T[]} */
+        this.ids = fixed ? /** @type {T[]} */ (/** @type {unknown} */ (new IdsArray(capacity))) : [];
+
+        /** @type {number[]} */
+        this.values = fixed ? /** @type {number[]} */ (/** @type {unknown} */ (new ValuesArray(capacity))) : [];
+
+        /** Maximum number of items the queue can hold; `Infinity` for regular-array queues, which grow on demand. */
+        this.capacity = capacity;
 
         /** Number of items in the queue. */
         this.length = 0;
@@ -24,10 +45,14 @@ export default class FlatQueue {
      * `priority` must be a number. Items are sorted and returned from low to high priority. Multiple items
      * with the same priority value can be added to the queue, but there is no guaranteed order between these items.
      *
+     * For fixed-capacity queues, throws a `RangeError` if the queue is already full.
+     *
      * @param {T} item
      * @param {number} priority
      */
     push(item, priority) {
+        if (this.length === this.capacity) throw new RangeError('Queue is at capacity.');
+
         let pos = this.length++;
 
         while (pos > 0) {
@@ -92,13 +117,14 @@ export default class FlatQueue {
     }
 
     /**
-     * Shrinks the internal arrays to `this.length`.
+     * Shrinks the internal arrays to `this.length`. No-op for queues with fixed capacity.
      *
      * `pop()` and `clear()` calls don't free memory automatically to avoid unnecessary resize operations.
      * This also means that items that have been added to the queue can't be garbage collected until
      * a new item is pushed in their place, or this method is called.
      */
     shrink() {
-        this.ids.length = this.values.length = this.length;
+        if (Array.isArray(this.ids)) this.ids.length = this.length;
+        if (Array.isArray(this.values)) this.values.length = this.length;
     }
 }
