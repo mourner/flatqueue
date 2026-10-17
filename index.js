@@ -28,7 +28,7 @@ export default class FlatQueue {
         this.values = fixed ? /** @type {number[]} */ (/** @type {unknown} */ (new ValuesArray(capacity))) : [];
 
         /** Maximum number of items the queue can hold; `Infinity` for regular-array queues, which grow on demand. */
-        this.capacity = capacity;
+        this.capacity = fixed ? this.ids.length : Infinity;
 
         /** Number of items in the queue. */
         this.length = 0;
