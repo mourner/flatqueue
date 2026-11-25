@@ -4,6 +4,27 @@ import assert from 'node:assert/strict';
 
 import FlatQueue from './index.js';
 
+test('does not push beyond the storage allocated for a fractional capacity', () => {
+    for (const capacity of [1, 1.5, 1.9]) {
+        const queue = new FlatQueue(capacity);
+        queue.push(42, 1);
+        assert.throws(() => queue.push(43, 0), RangeError);
+        assert.equal(queue.capacity, 1);
+        assert.equal(queue.length, 1);
+        assert.equal(queue.pop(), 42);
+        assert.equal(queue.pop(), undefined);
+    }
+});
+
+test('does not push when the allocated capacity is zero', () => {
+    for (const capacity of [0, 0.5]) {
+        const queue = new FlatQueue(capacity);
+        assert.throws(() => queue.push(42, 1), RangeError);
+        assert.equal(queue.capacity, 0);
+        assert.equal(queue.length, 0);
+    }
+});
+
 const data = [];
 for (let i = 0; i < 100; i++) {
     data.push(Math.floor(100 * Math.random()));
